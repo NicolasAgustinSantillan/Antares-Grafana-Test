@@ -63,7 +63,7 @@ Dentro de
 
 `docker-compose up --build`
 
-## 3. 🛩️ Opcional - Revisar que lleguen los datos a MQTT
+## 2. 🛩️ Opcional - Revisar que lleguen los datos a MQTT
 
 - Instalar [MQTT Explorer](https://mqtt-explorer.com/)
 
@@ -76,7 +76,7 @@ Host: localhost
 port: 1884
 ```
 
-## 4. 📊 Grafana
+## 3. 📊 Grafana
 
 Abrir Grafana en [http://localhost:3000/login](http://localhost:3000/login)
 
