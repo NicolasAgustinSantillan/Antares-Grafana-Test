@@ -1,4 +1,4 @@
-﻿namespace MQTT.Subscriber.MQTT
+﻿namespace MQTT.Shared
 {
     public class Telemetry
     {
