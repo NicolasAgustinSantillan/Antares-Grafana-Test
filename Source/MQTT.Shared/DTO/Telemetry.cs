@@ -1,4 +1,4 @@
-﻿namespace MQTT.Shared
+﻿namespace MQTT.Shared.DTO
 {
     public class Telemetry
     {

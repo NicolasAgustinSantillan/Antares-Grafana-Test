@@ -1,7 +1,7 @@
 ﻿using InfluxDB.Client;
 using InfluxDB.Client.Api.Domain;
 using InfluxDB.Client.Writes;
-using MQTT.Subscriber.MQTT;
+using MQTT.Shared.DTO;
 
 namespace MQTT.Subscriber
 {

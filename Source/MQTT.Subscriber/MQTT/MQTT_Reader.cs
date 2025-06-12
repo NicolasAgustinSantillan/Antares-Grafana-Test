@@ -4,6 +4,7 @@ using MQTTnet;
 using MQTTnet.Client;
 using System.Text.Json;
 using MQTTnet.Client.Subscribing;
+using MQTT.Shared.DTO;
 
 namespace MQTT.Subscriber.MQTT
 {

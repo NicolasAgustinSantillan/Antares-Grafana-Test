@@ -1,12 +1,20 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
+# Copiar ambos .csproj antes del restore
 COPY Source/MQTT.Subscriber/*.csproj ./MQTT.Subscriber/
+COPY Source/MQTT.Shared/*.csproj ./MQTT.Shared/
+
+# Restaurar con los proyectos
 RUN dotnet restore ./MQTT.Subscriber/MQTT.Subscriber.csproj
 
+# Copiar todo el código fuente
 COPY Source ./Source
+
+# Publicar
 RUN dotnet publish ./Source/MQTT.Subscriber/MQTT.Subscriber.csproj -c Release -o /app
 
+# Runtime image
 FROM mcr.microsoft.com/dotnet/runtime:8.0
 WORKDIR /app
 COPY --from=build /app .

@@ -1,14 +1,23 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
+# Copiar los .csproj necesarios antes de hacer restore
 COPY Source/MQTT.DataGenerator/*.csproj ./MQTT.DataGenerator/
+COPY Source/MQTT.Shared/*.csproj ./MQTT.Shared/
+
+# Restaurar dependencias
 RUN dotnet restore ./MQTT.DataGenerator/MQTT.DataGenerator.csproj
 
+# Copiar todo el código fuente
 COPY Source ./Source
+
+# Publicar la app
 RUN dotnet publish ./Source/MQTT.DataGenerator/MQTT.DataGenerator.csproj -c Release -o /app
 
+# Imagen de runtime
 FROM mcr.microsoft.com/dotnet/runtime:8.0
 WORKDIR /app
 COPY --from=build /app .
 
 ENTRYPOINT ["dotnet", "MQTT.DataGenerator.dll"]
+

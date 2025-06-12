@@ -2,7 +2,7 @@
 
 Requisitos
 
-- Tener instalado Docker
+- Docker
 - Visual Studio
 
 ## 1. 🐋 Docker comopose
