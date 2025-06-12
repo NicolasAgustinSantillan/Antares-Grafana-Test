@@ -6,19 +6,24 @@ class Program
 {
     static async Task Main(string[] args)
     {
+        var serverAddress = Environment.GetEnvironmentVariable("MQTT_SERVER") ?? "localhost";
+
         var reader = new MQTT_Reader(
-            "localhost", 
+            serverAddress,
             1884, 
             MqttProtocolVersion.V311, 
             "v1/devices/me/telemetry"
         );
 
+        var influxUrl = Environment.GetEnvironmentVariable("INFLUX_URL") ?? "http://localhost:8086";
+
         var influxWriter = new InfluxDBWriter(
-            influxUrl: "http://localhost:8086",
+            influxUrl: influxUrl,
             token: "my-super-token",
             bucket: "my-bucket",
             org: "Antares"
         );
+
 
         reader.DataReceived += async (sender, telemetry) =>
         {

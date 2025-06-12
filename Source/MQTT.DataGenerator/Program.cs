@@ -12,11 +12,12 @@ class Program
         var mqttFactory = new MqttFactory();
         var mqttClient = mqttFactory.CreateMqttClient();
 
+        var serverAddress = Environment.GetEnvironmentVariable("MQTT_SERVER") ?? "127.0.0.1";
+
         var options = new MqttClientOptionsBuilder()
-            .WithTcpServer("127.0.0.1", 1884)
+            .WithTcpServer(serverAddress, 1884)
             .WithProtocolVersion(MqttProtocolVersion.V311)
             .Build();
-
 
         try
         {

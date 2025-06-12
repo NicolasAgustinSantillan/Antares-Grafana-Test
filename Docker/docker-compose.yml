@@ -1,5 +1,3 @@
-version: "3.7"
-
 services:
   mosquitto:
     image: eclipse-mosquitto:2.0
@@ -8,9 +6,9 @@ services:
       - "1884:1884"
     restart: always
     volumes:
-      - ./mosquitto/config:/mosquitto/config
-      - ./mosquitto/data:/mosquitto/data
-      - ./mosquitto/log:/mosquitto/log
+      - ../Docker/mosquitto/config:/mosquitto/config
+      - ../Docker/mosquitto/data:/mosquitto/data
+      - ../Docker/mosquitto/log:/mosquitto/log
     networks:
       - shared-net
 
@@ -46,10 +44,36 @@ services:
     networks:
       - shared-net
 
+  mqtt-generator:
+    build:
+      context: ..
+      dockerfile: Docker/Dockerfile.generator
+    container_name: mqtt-generator
+    depends_on:
+      - mosquitto
+    networks:
+      - shared-net
+    environment:
+      - MQTT_SERVER=mosquitto
+
+  mqtt-subscriber:
+    build:
+      context: ..
+      dockerfile: Docker/Dockerfile.subscriber
+    container_name: mqtt-subscriber
+    depends_on:
+      - mosquitto
+      - influxdb
+    networks:
+      - shared-net
+    environment:
+      - MQTT_SERVER=mosquitto
+      - INFLUX_URL=http://influxdb:8086
+
+
 volumes:
   influxdb-data:
   grafana-data:
-
 
 networks:
   shared-net:
