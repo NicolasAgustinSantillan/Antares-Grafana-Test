@@ -7,13 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQTT.DataGenerator", "Sourc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQTT.Subscriber", "Source\MQTT.Subscriber\MQTT.Subscriber.csproj", "{F3D14D41-0D89-4C83-9DBA-066684F889D0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{916137CE-6BA1-450B-8F2C-EBAD5BF8FCB0}"
-	ProjectSection(SolutionItems) = preProject
-		Dockerfile.generator = Dockerfile.generator
-		Dockerfile.sender = Dockerfile.sender
-		README.md = README.md
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
