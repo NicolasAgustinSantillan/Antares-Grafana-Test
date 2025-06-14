@@ -138,7 +138,7 @@ En la cabecera del grafico ajustar
 1. Last 1 minute
 2. Refresh 5 seconds AUTO
 
-#### ## 💣 **Presión atmosférica actual por dispositivo**
+#### 💣 **Presión atmosférica actual por dispositivo**
 
 Este panel muestra el último valor registrado por cada `device_id`:
 
